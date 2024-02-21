@@ -61,7 +61,7 @@ fun PhotoListingsScreen(
                 ) {
                     items(uiState.taggedPhotoItems.size) { photoItem ->
                         GlideImage(
-                            model = uiState.taggedPhotoItems[photoItem].media.mUrl,
+                            model = uiState.taggedPhotoItems[photoItem].media.m,
                             contentDescription = "",
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
@@ -70,7 +70,7 @@ fun PhotoListingsScreen(
                                     val delim = ":*:"
                                     val selectItem = uiState.taggedPhotoItems[photoItem]
                                     val selectPhotoMeta =
-                                        "${selectItem.title}$delim${selectItem.author}$delim${selectItem.media.mUrl}$delim${selectItem.description}$delim${selectItem.published}"
+                                        "${selectItem.title}$delim${selectItem.author}$delim${selectItem.media.m}$delim${selectItem.description}$delim${selectItem.published}"
                                     navigator.navigate(
                                         CompanyInfoScreenDestination(selectPhotoMeta)
                                     )
