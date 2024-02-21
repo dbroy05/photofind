@@ -28,7 +28,6 @@ fun PhotoListingsScreen(
     navigator: DestinationsNavigator,
     viewModel: PhotoListingsViewModel = hiltViewModel()
 ) {
-    //val state = viewModel.state
     val uiState by viewModel.uiStateFlow.collectAsState()
     Column(
         modifier = Modifier.fillMaxSize()
@@ -62,7 +61,7 @@ fun PhotoListingsScreen(
                 ) {
                     items(uiState.taggedPhotoItems.size) { photoItem ->
                         GlideImage(
-                            model = uiState.taggedPhotoItems[photoItem].media.m,
+                            model = uiState.taggedPhotoItems[photoItem].media.mUrl,
                             contentDescription = "",
                             contentScale = ContentScale.Crop,
                             modifier = Modifier
@@ -71,7 +70,7 @@ fun PhotoListingsScreen(
                                     val delim = ":*:"
                                     val selectItem = uiState.taggedPhotoItems[photoItem]
                                     val selectPhotoMeta =
-                                        "${selectItem.title}$delim${selectItem.author}$delim${selectItem.media.m}$delim${selectItem.description}$delim${selectItem.published}"
+                                        "${selectItem.title}$delim${selectItem.author}$delim${selectItem.media.mUrl}$delim${selectItem.description}$delim${selectItem.published}"
                                     navigator.navigate(
                                         CompanyInfoScreenDestination(selectPhotoMeta)
                                     )
